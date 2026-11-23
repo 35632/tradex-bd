@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TradeX BD — Demo</title>
+<style>
+:root{--navy:#101c35;--blue:#2457d6;--bg:#f3f6fb;--ink:#17233b;--muted:#71809b;--green:#16885b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;color:var(--ink)}
+header{background:var(--navy);color:white;padding:18px 16px 24px;border-radius:0 0 22px 22px}
+.top{display:flex;justify-content:space-between;align-items:center}.brand{font-size:22px;font-weight:800}.tag{font-size:11px;background:#29436d;padding:6px 9px;border-radius:20px}
+.small{font-size:12px;color:#b8c7e8;margin-top:22px}.balance{font-size:30px;font-weight:800;margin:4px 0}.gain{font-size:13px;color:#61d5a1}
+main{max-width:760px;margin:auto;padding:16px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tile,.panel{background:white;border-radius:15px;padding:15px;box-shadow:0 2px 10px #13284b0b}.tile span{display:block;color:var(--muted);font-size:12px}.tile b{font-size:19px;display:block;margin-top:5px}.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.action{border:0;background:white;border-radius:13px;padding:13px 4px;font-weight:650;color:var(--ink);font-size:12px}.action i{display:block;font-style:normal;font-size:20px;margin-bottom:5px}
+h3{font-size:16px;margin:20px 0 10px}.plan{display:flex;justify-content:space-between;align-items:center;border:1px solid #e6ebf3;border-radius:13px;padding:13px;margin:9px 0}.plan small{display:block;color:var(--muted);margin-top:4px}.btn{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 14px;font-weight:700}.outline{background:white;color:var(--blue);border:1px solid #cbd7f3}.tabs{display:flex;gap:8px;margin:12px 0}.tabs button{flex:1;padding:10px;border:0;border-radius:9px;background:#e5ebf5;font-weight:700}.tabs .active{background:var(--navy);color:white}.notice{font-size:12px;line-height:1.5;color:#775b13;background:#fff6dc;border:1px solid #f2dfaa;padding:11px;border-radius:11px;margin:14px 0}.hidden{display:none}.field{width:100%;padding:12px;border:1px solid #dce3ee;border-radius:9px;margin:6px 0 12px;font:inherit}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.muted{color:var(--muted);font-size:12px}footer{text-align:center;color:var(--muted);font-size:11px;padding:22px}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand">TradeX BD</div><div class="tag">DEMO VERSION</div></div><div class="small">TOTAL DEMO ASSETS</div><div class="balance" id="balance">৳ 25,000.00</div><div class="gain">+ ৳1,250.00 · Sample return only</div></header>
+<main>
+<div class="tabs"><button class="active" onclick="show('user',this)">User Dashboard</button><button onclick="show('login',this)">Login / Register</button><button onclick="show('admin',this)">Admin Demo</button></div>
+<section id="user">
+<div class="grid"><div class="tile"><span>Demo Invested</span><b>৳20,000</b></div><div class="tile"><span>Demo Profit</span><b style="color:var(--green)">৳1,250</b></div><div class="tile"><span>Pending Requests</span><b id="pending">0</b></div><div class="tile"><span>Account Status</span><b>Demo</b></div></div>
+<div class="actions"><button class="action" onclick="request('Deposit')"><i>＋</i>Deposit</button><button class="action" onclick="request('Withdraw')"><i>↗</i>Withdraw</button><button class="action" onclick="request('Invest')"><i>▣</i>Invest</button><button class="action" onclick="alert('Demo support: support@tradexbd.example')"><i>☏</i>Support</button></div>
+<h3>Investment Plans</h3>
+<div class="plan"><div><b>Starter Plan</b><small>Sample amount: ৳1,000 · No real return</small></div><button class="btn" onclick="request('Starter Plan')">Select</button></div>
+<div class="plan"><div><b>Growth Plan</b><small>Sample amount: ৳5,000 · No real return</small></div><button class="btn" onclick="request('Growth Plan')">Select</button></div>
+<div class="plan"><div><b>Premium Plan</b><small>Sample amount: ৳10,000 · No real return</small></div><button class="btn" onclick="request('Premium Plan')">Select</button></div>
+<h3>Recent Activity</h3><div class="panel muted" id="activity">কোনো ডেমো অ্যাক্টিভিটি নেই। উপরের বাটনে চাপ দিয়ে নমুনা রিকোয়েস্ট তৈরি করো।</div>
+</section>
+<section id="login" class="hidden panel"><h3>Account Access — Demo</h3><label class="muted">Email / Phone</label><input class="field" placeholder="আপনার ইমেইল বা ফোন নম্বর"><label class="muted">Password</label><input class="field" type="password" placeholder="ডেমো পাসওয়ার্ড"><button class="btn" onclick="alert('এটি শুধু UI নমুনা। বাস্তব লগইন এখনো সংযুক্ত নয়।')">Login</button> <button class="btn outline" onclick="alert('রেজিস্ট্রেশন এখনো ডেমো মাত্র।')">Create account</button><p class="muted">এই নমুনায় কোনো তথ্য সার্ভারে পাঠানো বা সংরক্ষণ করা হয় না।</p></section>
+<section id="admin" class="hidden panel"><h3>Admin Panel — Demo</h3><div class="grid"><div class="tile"><span>Demo Users</span><b>12</b></div><div class="tile"><span>Deposit Requests</span><b id="adminpending">0</b></div></div><p class="muted">এখানে শুধু নমুনা পরিসংখ্যান দেখানো হচ্ছে। কোনো বাস্তব ইউজার, টাকা বা লেনদেন নেই।</p></section>
+<div class="notice"><b>গুরুত্বপূর্ণ:</b> এটি কেবল ডিজাইন প্রোটোটাইপ। বাস্তব টাকা নেওয়া, বিনিয়োগ পরিচালনা, লাভের প্রতিশ্রুতি বা উত্তোলনের আগে বাংলাদেশে প্রযোজ্য আইন, নিয়ন্ত্রক অনুমোদন, KYC/AML, নিরাপত্তা ও অনুমোদিত পেমেন্ট ব্যবস্থা নিশ্চিত করতে হবে।</div>
+</main><footer>TradeX BD · Prototype only · No real money or investment activity</footer>
+<script>
+let count=0;function show(id,btn){['user','login','admin'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
+function request(type){count++;document.getElementById('pending').textContent=count;document.getElementById('adminpending').textContent=count;let a=document.getElementById('activity');a.innerHTML='';let p=document.createElement('div');p.textContent='Demo request #'+count+': '+type+' — Pending (simulation only)';a.appendChild(p)}
+</script>
+</body></html>
